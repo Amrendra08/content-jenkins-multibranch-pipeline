@@ -5,11 +5,11 @@ pipeline {
       steps {
         sh 'javac -d . src/*.java'
         sh 'echo Main-Class: Rectangulator > MANIFEST.MF'
-        sh 'jar -cvmf MANIFEST.MF rectanle.jar *.class'
+        sh 'jar -cvmf MANIFEST.MF rectangle.jar *.class' 
       }
       post {
         success {
-          archiveArtifacts artifacts: 'rectangle.jar', fingerprint: true
+          archiveArtifacts artifacts: 'rectangle.jar', fingerprint:true
         }
       }
     }
@@ -28,8 +28,7 @@ pipeline {
         echo 'Checking Out Development'
         sh 'git checkout development'
         sh 'git pull origin'
-        echo 'Amrendra'
-        echo 'checking out Master'
+        echo 'Checking Out Master'
         sh 'git checkout master'
         echo 'Merging Development into Master'
         sh 'git merge development'
